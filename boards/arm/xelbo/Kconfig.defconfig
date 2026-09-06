@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: MIT
+
+if BOARD_XELBO
+
+if USB_DEVICE_STACK
+
+config USB_NRFX
+    default y
+
+endif # USB_DEVICE_STACK
+
+config BT_CTLR
+    default BT
+
+config LED_STRIP_INIT_PRIORITY
+    default 80
+
+choice ZMK_BOOTMODE_MAGIC_VALUE_BOOTLOADER_TYPE
+    default ZMK_BOOTMODE_MAGIC_VALUE_BOOTLOADER_TYPE_ADAFRUIT_NRF52
+endchoice
+
+endif

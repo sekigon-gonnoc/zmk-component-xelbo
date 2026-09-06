@@ -1,0 +1,32 @@
+# SPDX-License-Identifier: MIT
+
+config BOARD_XELBO
+    select SOC_NRF52833_QIAA
+    imply RETAINED_MEM
+    imply RETENTION
+    imply RETENTION_BOOT_MODE
+
+config XELBO_GPIO_LED_TO_WS2812
+    bool "Forward GPIO LED state to the onboard WS2812"
+    default y
+    select LED_STRIP
+    help
+      Treat pins 0, 1, and 2 of the Xelbo virtual GPIO controller as
+      red, green, and blue channels of the onboard WS2812 respectively.
+
+      Disable this option to leave the virtual GPIO as a no-op controller.
+      The WS2812 remains available as a normal LED strip when LED_STRIP is
+      enabled by the application.
+
+config XELBO_GPIO_LED_BRIGHTNESS
+    int "WS2812 brightness for GPIO LED channels"
+    default 16
+    range 0 255
+    depends on XELBO_GPIO_LED_TO_WS2812
+    help
+      RGB channel value used when a GPIO LED channel is on. A value of 0
+      is off and 255 is the maximum brightness.
+
+config XELBO_GPIO_LED_INIT_PRIORITY
+    int
+    default 85

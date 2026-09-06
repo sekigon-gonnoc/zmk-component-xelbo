@@ -1,0 +1,18 @@
+description: GPIO-compatible RGB channel adapter for a WS2812 LED
+
+compatible: "zmk,ws2812-gpio"
+
+include: [gpio-controller.yaml]
+
+properties:
+  led-strip:
+    type: phandle
+    required: true
+    description: WS2812 LED strip device driven by this adapter
+
+  "#gpio-cells":
+    const: 2
+
+gpio-cells:
+  - pin
+  - flags

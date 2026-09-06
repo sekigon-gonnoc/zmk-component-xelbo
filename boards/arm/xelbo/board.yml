@@ -1,0 +1,10 @@
+board:
+  name: xelbo
+  vendor: sekigon
+  socs:
+    - name: nrf52833
+  revision:
+    format: major.minor.patch
+    default: 1.0.0
+    revisions:
+      - name: 1.0.0
